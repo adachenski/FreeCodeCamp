@@ -114,10 +114,12 @@ function getSingleQuote(allQuotes) {
 
 var quote = getSingleQuote(quotes);
 var content = document.getElementById('content').innerHTML = quote[0];
-var author = document.getElementById('author').innerHTML = '~ '+quote[1];
+var author = document.getElementById('author').innerHTML = '~ ' + quote[1];
+var tweetQuote = document.getElementById('tweet').href = "http://twitter.com/home?status=I%20" + content + " " + author + "%20http://bit.ly/184zcEl";
 
 document.getElementById('next').addEventListener('click', function () {
     quote = getSingleQuote(quotes);
+    tweetQuote = document.getElementById('tweet').href = "http://twitter.com/home?status=I%20" + content + " " + author + "%20http://bit.ly/184zcEl";
     content = document.getElementById('content').innerHTML = quote[0];
-author = document.getElementById('author').innerHTML = '~ '+quote[1];
+    author = document.getElementById('author').innerHTML = '~ ' + quote[1];
 });
