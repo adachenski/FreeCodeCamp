@@ -42,6 +42,7 @@ function codeLatLng(lat, lng) {
         }
         //city data
         document.getElementById('main-container').innerHTML = results[5].formatted_address + ' ' + city.short_name + " " + city.long_name;
+        asincWether();
         // alert(city.short_name + " " + city.long_name)
 
 
@@ -57,17 +58,21 @@ function codeLatLng(lat, lng) {
 function asincWether() {
   var xhr = new XMLHttpRequest();
   var arr = document.getElementById('main-container').innerText;
-  var farr = arr.split(',');
-  console.log(farr);
-  xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q="+farr[0]+"&APPID=16b7c694b7b650ee8f7ceb88c85afc71", true);
+  var city = arr.split(',');
+  console.log(city);
+  xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city[0] + "&APPID=16b7c694b7b650ee8f7ceb88c85afc71", true);
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         //console.log(xhr.responseText);
         var x = JSON.parse(xhr.responseText);
-       console.log(x);
-       //return x;
-        document.getElementById('wether').innerHTML = JSON.stringify(x.main);
+        var tempToFahrenheit = parseInt(JSON.stringify(x.main.temp) * (9 / 5) - 459.67);
+        var humidity = x.main.humidity;
+        var wind = parseInt(JSON.stringify(x.wind.speed) * 360000 / (5280 * 12 * 2.54));
+        var weatherImg = x.weather[0].icon;
+          console.log(x);
+        //return x;
+        document.getElementById('wether').innerHTML = "Temp: " + tempToFahrenheit + "</br> Humidity: " + humidity + "</br> Wind: " + wind +"</br> img "+'<img  src="http://openweathermap.org/img/w/'+weatherImg+'.png">';
       } else {
         console.error(xhr.statusText);
       }
