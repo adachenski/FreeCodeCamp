@@ -64,7 +64,7 @@ function asincWether() {
   var arr = document.getElementById('main-address').innerText;
   var city = arr.split(',');
   console.log(city);
-  xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + city[0] + "&APPID=16b7c694b7b650ee8f7ceb88c85afc71", true);
+  xhr.open("GET", "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=" + city[0] + "&APPID=16b7c694b7b650ee8f7ceb88c85afc71", true);
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
