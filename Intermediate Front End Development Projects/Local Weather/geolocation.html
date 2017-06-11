@@ -12,13 +12,25 @@
 </head>
 
 <body onload="initialize()">
-    <div id='main-container'>
+    <div class="main-container">
+        <div id='main-address'>
 
-    </div>
-    <div>
-        <div id='wether'></div>
+        </div>
+        <div>
+            <div id="weather-img">
+                <h2>Pleace Accept the conditions above</h2>
+            </div>
+            <div>
+                <button onclick="convertUnits()">Convert Units</button>
+            </div>
 
+            <div class="left-info general-info" id='stats-usa'>Tempreture</div>
+            <div class="left-info general-info" style="display:none" id="stats-europa">Nothing to see</div>
+            <div class="right-info general-info" id='stats-two'>General info</div>
+            <div style="clear:both"></div>
+        </div>
     </div>
+
 </body>
 
 </html>
