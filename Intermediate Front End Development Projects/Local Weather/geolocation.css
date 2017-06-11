@@ -1,0 +1,82 @@
+    body {
+        background-image: url('https://lh3.googleusercontent.com/PWL_r_v2760JdZ_w9d5r97yGchDvYisMoeYsJ-1-wzA0hYspRa6sZSwbl6i6JTSl0w=h900');
+        background-position: center top;
+        background-size: 100% auto;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    .main-container {
+        text-align: center;
+        margin: 7% auto;
+        background-color: lightgray;
+        opacity: 0.8;
+        /* margin: 10%; */
+        padding: 3%;
+        width: 330px;
+    }
+    
+    @media screen and (max-width: 400px) {
+        .main-container {
+            width: 280px;
+        }
+        .general-info {
+            font-size: 1em;
+            width: 120px !important;
+        }
+    }
+    
+    .main-container:hover {
+        animation-name: thumbTilt;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        transition-timing-function: ease-in;
+        -webkit-animation-name: thumbTilt;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        -webkit-transition-timing-function: ease-in;
+    }
+    
+    @keyframes thumbTilt {
+        0% {
+            transform: scale(1);
+        }
+        20% {
+            transform: perspective(400px) scale(1.1);
+        }
+        100% {
+            transform: perspective(400px) scale(1.2);
+        }
+    }
+    
+    .left-info {
+        float: left;
+    }
+    
+    .general-info {
+        font-size: 1.1em;
+        background-color: lightslategrey;
+        color: white;
+        padding: 10px;
+        width: 140px;
+    }
+    
+    .right-info {
+        float: right;
+    }
+    
+    button {
+        padding: 5px 10px;
+        background-color: darkcyan;
+        color: aliceblue;
+        font-weight: 500;
+        border: 0;
+        letter-spacing: 1px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        white-space: nowrap;
+        vertical-align: middle;
+        margin-bottom: 10px;
+    }
