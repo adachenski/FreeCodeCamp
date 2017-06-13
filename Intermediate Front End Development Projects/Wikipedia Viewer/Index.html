@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wiki Viewer</title>
+</head>
+
+<body>
+    <input type="text" id='wiki-input' placeholder="search">
+    <button onclick="getValue()">Get Value</button>
+
+    <ul id='wiki-output'>
+
+    </ul>
+<div id='extra'>   </div>
+    <script>
+        var inputValue = document.getElementById('wiki-input').value;
+        var searchString = 'https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=food&utf&format=json';
+        var printString = 'https://en.wikipedia.org/wiki/';
+        console.log(inputValue);
+        function getValue() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", searchString, true);
+            xhr.onload = function (e) {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        //console.log(xhr.responseText);
+                        var resultBody = JSON.parse(xhr.responseText);
+                        var queryOne = resultBody.query.search;
+                        var extra = document.getElementById('extra');
+                        for (var i = 0; i < queryOne.length; i += 1) {
+                            var ul = document.getElementById('wiki-output');
+                            var li = document.createElement('li');
+                            var title3 = document.createTextNode(queryOne[i].title);
+                            var title4 = queryOne[i].title;
+                            var toStr = JSON.stringify(title4);
+                            //console.log(toStr)
+                            var a = document.createElement('a');
+                             a.innerText = title4;
+                            a.href = printString+title4;
+                           
+                           // var snippet = document.createElement(queryOne[i].snippet);
+                            li.appendChild(title3);
+                            li.appendChild(document.createElement('br'));
+                            li.innerHTML += queryOne[i].snippet;
+                            li.appendChild(a);
+                            ul.appendChild(li);
+                            // extra.innerHTML+=queryOne[i].snippet;
+                            // console.log(queryOne[i].snippet)
+
+                        }
+                        // console.log(resultBody);
+                        // console.log(queryOne);
+
+                    } else {
+                        console.error(xhr.statusText);
+                    }
+                }
+            };
+            xhr.onerror = function (e) {
+                console.error(xhr.statusText);
+            };
+            xhr.send(null);
+            var inputValue = document.getElementById('wiki-input').value;
+
+        }
+    </script>
+</body>
+
+</html>
