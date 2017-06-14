@@ -9,10 +9,118 @@
 </head>
 
 <body>
-    <input type="text" id='wiki-input' onkeypress="triggerSearch(event)" placeholder="search">
+    <style>
+        body {
+            background-color: #00688b;
+        }
+        
+        ;
+        ul {
+            list-style-type: none;
+        }
+        
+        #nasko {
+            text-align: center;
+            margin: 0% auto;
+        }
+        
+        .wrapper {
+            padding:5% 20%;
+        }
+        
+        input {
+          
+            border: 5px solid orange;
+            transition: width 2s;
+            background-color: #00688b;
+            color: white;
+            /*font-weight: 600;*/
+            font-size: 1.2em;
+            text-align: center;
+            animation-name: originalTransform;
+                     animation-duration: 1s;
+            animation-fill-mode: both;
+            transition-timing-function: ease-in;
+        }
+        
+        input:focus {
+            cursor: pointer;
+            animation-name: inputTransform;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            transition-timing-function: ease-in;
+        }
+        @keyframes originalTransform{
+              0% {
+                width: 200px;
+                height: 30px;
+                border-radius: 0;
+            }
+             50% {
+                width: 75px;
+                height: 40px;
+                border-radius: 25%;
+            }
+             100% {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+        @keyframes inputTransform {
+            0% {
+                width: 50px;
+                height: 50px;
+                border-radius: 45%;
+            }
+            50% {
+                width: 75px;
+                height: 40px;
+                border-radius: 25%;
+            }
+            100% {
+                width: 200px;
+                height: 30px;
+                border-radius: 0;
+            }
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            color: white;
+            background-color: darkgoldenrod;
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+            text-decoration: none;
+        }
+        a:hover{
+            color: black;
+            background-color: white;
+        }
+        
+        li {
+            width: auto;
+            margin-bottom: 10px;
+        }
+        h2{
+            color: #00688b;
+        }
+    </style>
 
-    <ul id='wiki-output'>
-    </ul>
+    <div class="wrapper">
+        <div id="nasko">
+            <input type="text" id='wiki-input' onkeypress="triggerSearch(event)" placeholder="&#x1f50e;">
+            <h3>Pres Enter to Search.</h3>
+        </div>
+        <ul id='wiki-output'>
+        </ul>
+    </div>
+
 
     <script>
         function triggerSearch(x) {
@@ -28,17 +136,27 @@
                         if (xhr.status === 200) {
                             var resultBody = JSON.parse(xhr.responseText);
                             var queryOne = resultBody.query.search;
-                               document.getElementById('wiki-output').innerHTML = "";
+                            document.getElementById('wiki-output').innerHTML = "";
                             for (var i = 0; i < queryOne.length; i += 1) {
                                 var ul = document.getElementById('wiki-output')
                                 var li = document.createElement('li');
+
                                 var title = queryOne[i].title;
+                                var snippet = queryOne[i].snippet;
+                                var h1 = document.createElement('h2');
+                                console.log(title);
+                                h1.innerHTML = title;
+                                console.log(h1);
+                                var div = document.createElement('div');;
+                                div.innerHTML = snippet;
                                 var a = document.createElement('a');
-                                a.innerText = title;
+
                                 a.href = printString + title;
+                                a.appendChild(h1);
+                                a.appendChild(div);
                                 li.appendChild(a);
-                                li.appendChild(document.createElement('br'));
-                                li.innerHTML += queryOne[i].snippet;
+
+
                                 ul.appendChild(li);
                             }
                         } else {
