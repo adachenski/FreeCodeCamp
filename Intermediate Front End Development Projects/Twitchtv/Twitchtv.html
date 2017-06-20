@@ -1,11 +1,118 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Twitchtv</title>
+    <style>
+        .wrapper {
+            margin: 5% 25%;
+            background-color: #5C5457;
+            color: white;
+        }
+        
+        .header {
+            padding: 20px;
+            border-bottom: 3px solid white;
+        }
+        
+        .user-info {
+            padding: 15px;
+            border-bottom: 3px solid white;
+        }
+        
+        .online {
+            background-color: #B8CCA6;
+        }
+        
+        .offline {
+            background-color: #4A5E82;
+        }
+        
+        .switch {
+            width: 25%;
+            float: right;
+        }
+        
+        .switch .header-menu {
+            white-space: nowrap;
+            overflow: hidden;
+            margin-left: 90%;
+            width: 10%;
+        }
+        
+        .switch .header-menu:hover {
+            cursor: pointer;
+            animation-name: extendMenu;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes extendMenu {
+            0% {
+                margin-left: 90%;
+                width: 10%;
+            }
+            50% {
+                margin-left: 50%;
+                width: 50%
+            }
+            100% {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+        
+        .title {
+            float: left;
+            width: 75%;
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <div class="wrapper">
+        <div class="header">
+            <div class="title">
+                <h1>TWITCH STREAMERS</h1>
+            </div>
+
+
+
+            <div class="switch">
+                <div class="header-menu">&#9734; all</div>
+                <div id="offline-btn" class="header-menu">&#9734; offline</div>
+                <div class="header-menu">&#9734; online</div>
+            </div>
+            <div style=" clear: both;"></div>
+        </div>
+        <div class="user-list">
+            <div class="user-info online">nas</div>
+            <div class="user-info offline">offline eeds</div>
+            <div class="user-info offline">offline ds</div>
+        </div>
+    </div>
+
+    <script>
+        function showOffline() {
+            console.log('offline')
+            var parent = document.getElementsByClassName('user-list')[0];
+            //console.log(parent);
+            var child = document.getElementsByClassName('online');
+            for (var i = 0; i <= child.length; i += 1) {
+                //  console.log(child[i]);
+                parent.removeChild(child[0]);
+            }
+            console.log(child);
+            // parent.removeChild(child);
+
+        }
+        document.getElementById("offline-btn").addEventListener("click", showOffline)
+    </script>
+
 </body>
+
 </html>
