@@ -1,0 +1,95 @@
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .wrapper {
+            margin: 5% 25%;
+            background-color: #5C5457;
+            color: white;
+        }
+        
+        .star {
+            border: 2px solid white;
+            padding-bottom: 3px;
+            padding-left: 2px;
+        }
+        
+        @media screen and (max-width: 767px) {
+            .wrapper {
+                margin: 5% 2%;
+            }
+        }
+        
+        .header {
+            padding: 20px;
+            border-bottom: 3px solid white;
+        }
+        
+        .user-info {
+            padding: 15px;
+            border-bottom: 3px solid white;
+        }
+        
+        .online {
+            background-color: #B8CCA6;
+        }
+        
+        .offline {
+            background-color: #4A5E82;
+        }
+        
+        .star-off {
+            background-color: #4A5E82;
+        }
+        
+        .star-on {
+            background-color: #B8CCA6;
+        }
+        
+        .switch {
+            width: 25%;
+            float: right;
+        }
+        
+        .switch .header-menu {
+            white-space: nowrap;
+            overflow: hidden;
+            margin-left: 90%;
+            width: 15px;
+        }
+        
+        .switch .header-menu:hover {
+            cursor: pointer;
+            animation-name: extendMenu;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes extendMenu {
+            0% {
+                margin-left: 90%;
+                width: 15px;
+            }
+            50% {
+                margin-left: 50%;
+                width: 50%
+            }
+            100% {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+        
+        .title {
+            float: left;
+            width: 75%;
+        }
+        
+        .user-info>a {
+            padding: 0px 5px;
+        }
+        
+        .user-info img {
+            width: 30px;
+        }

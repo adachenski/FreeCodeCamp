@@ -5,104 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Twitchtv</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .wrapper {
-            margin: 5% 25%;
-            background-color: #5C5457;
-            color: white;
-        }
-        
-        .header {
-            padding: 20px;
-            border-bottom: 3px solid white;
-        }
-        
-        .user-info {
-            padding: 15px;
-            border-bottom: 3px solid white;
-        }
-        
-        .online {
-            background-color: #B8CCA6;
-        }
-        
-        .offline {
-            background-color: #4A5E82;
-        }
-        
-        .switch {
-            width: 25%;
-            float: right;
-        }
-        
-        .switch .header-menu {
-            white-space: nowrap;
-            overflow: hidden;
-            margin-left: 90%;
-            width: 10%;
-        }
-        
-        .switch .header-menu:hover {
-            cursor: pointer;
-            animation-name: extendMenu;
-            animation-duration: 1s;
-            animation-timing-function: ease;
-            animation-fill-mode: both;
-        }
-        
-        @keyframes extendMenu {
-            0% {
-                margin-left: 90%;
-                width: 10%;
-            }
-            50% {
-                margin-left: 50%;
-                width: 50%
-            }
-            100% {
-                margin-left: 0%;
-                width: 100%;
-            }
-        }
-        
-        .title {
-            float: left;
-            width: 75%;
-        }
-        
-        .user-info img {
-            width: 30px;
-        }
-    </style>
+   <link rel="stylesheet" href="Twitchtv.css">
 </head>
 
 <body>
-<script async src="Twitchtv.js"></script>
-
+    <script async src="Twitchtv.js"></script>
     <div class="wrapper">
         <div class="header">
             <div class="title">
                 <h1>TWITCH STREAMERS</h1>
             </div>
             <div class="switch">
-                <div id="show-all" class="header-menu">&#9734; all</div>
-                <div id="offline-btn" class="header-menu">&#9734; offline</div>
-                <div id="online-btn" class="header-menu">&#9734; online</div>
+                <div id="show-all" class="header-menu star">&#9734; all</div>
+                <div id="offline-btn" class="header-menu star star-off">&#9734; offline</div>
+                <div id="online-btn" class="header-menu star star-on">&#9734; online</div>
             </div>
             <div style=" clear: both;"></div>
         </div>
         <div class="user-list">
-            <div async class="user-info online ecl2" >nas</div>
-            <div class="user-info offline freecodecamp">offline eeds</div>
-            <div class="user-info offline OgamingSC2">offline ds</div>
+            <div async class="user-info online ecl2"></div>
+            <div class="user-info offline freecodecamp"></div>
+            <div class="user-info offline OgamingSC2"></div>
         </div>
     </div>
-
-  
 </body>
 
 </html>
