@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Twitchtv</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         .wrapper {
             margin: 5% 25%;
             background-color: #5C5457;
@@ -87,16 +91,61 @@
             <div style=" clear: both;"></div>
         </div>
         <div class="user-list">
-            <div class="user-info online">nas</div>
+            <div class="user-info online" onclick="getJsonData('OgamingSC2')">nas</div>
             <div class="user-info offline">offline eeds</div>
             <div class="user-info offline">offline ds</div>
         </div>
     </div>
 
     <script>
+        function getJsonData(data) {
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://wind-bow.glitch.me/twitch-api/channels/'+data, true);
+            request.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status >= 200 && this.status < 400) {
+                        var data = JSON.parse(this.responseText);
+                        console.log(data);
+                        return data;
+                    }
+                    else {
+                        console.log(this.statusText);
+                        console.error(this.statusText);
+                    }
+                }
+               
+            };
+             request.onerror = function (e) {
+                    console.error(this.statusText);
+                };
+                request.send(null);
+        }
+
+        function XMLHttp(searchString, printString, inputValue) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", searchString, true);
+            xhr.onload = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var resultBody = JSON.parse(xhr.responseText);
+                        console.log(resultBody);
+                        // var queryOne = resultBody.query.search;
+                        //document.getElementById('wiki-output').innerHTML = "";
+
+                    } else {
+                        console.log(xhr.statusText);
+                        console.error(xhr.statusText);
+                    }
+                }
+            };
+            xhr.onerror = function (e) {
+                console.error(xhr.statusText);
+            };
+            xhr.send(null);
+            // var inputValue = document.getElementById('wiki-input').value;
+        }
+
         function hideOffline() {
-            
-            //console.log(parent);
             var onlineCild = document.getElementsByClassName('online');
             var offlineCild = document.getElementsByClassName('offline');
             for (var i = 0; i < offlineCild.length; i += 1) {
@@ -110,8 +159,6 @@
 
         }
         function hideOnline() {
-            
-            //var offlineCild = document.getElementsByClassName('user-list')[0];
             var onlineCild = document.getElementsByClassName('online');
             var offlineCild = document.getElementsByClassName('offline');
             for (var i = 0; i < onlineCild.length; i += 1) {
@@ -122,9 +169,6 @@
                 offlineCild[i].style.display = 'block';
 
             }
-
-
-
         }
         function showAll() {
             var parent = document.getElementsByClassName('user-list')[0];
